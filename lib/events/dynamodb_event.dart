@@ -30,6 +30,9 @@ class AwsDynamoDBUpdateRecord extends Event {
 /// DynamoDB Update Event Record ...
 @JsonSerializable()
 class AwsDynamoDBUpdateEventRecord {
+  @JsonKey()
+  final AwsDynamoDBUpdateRecord? dynamodb;
+
   /// Event Id ...
   @JsonKey()
   final String? eventId;
@@ -59,13 +62,15 @@ class AwsDynamoDBUpdateEventRecord {
 
   Map<String, dynamic> toJson() => _$AwsDynamoDBUpdateEventRecordToJson(this);
 
-  const AwsDynamoDBUpdateEventRecord(
-      {this.eventId,
-      this.eventName,
-      this.eventSource,
-      this.eventVersion,
-      this.awsRegion,
-      this.eventSourceARN});
+  const AwsDynamoDBUpdateEventRecord({
+    this.eventId,
+    this.eventName,
+    this.eventSource,
+    this.eventVersion,
+    this.awsRegion,
+    this.eventSourceARN,
+    this.dynamodb,
+  });
 }
 
 /// DynamoDB Update Event ...
